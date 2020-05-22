@@ -51,12 +51,14 @@ export class MemberDetailComponent implements OnInit {
   getImages() {
     const imageUrls = [];
     for ( const photo of this.user.photos) {
-      imageUrls.push({
-        small: photo.url,
-        medium: photo.url,
-        big: photo.url,
-        description: photo.description
-      });
+      if (photo.isApproved) {
+        imageUrls.push({
+          small: photo.url,
+          medium: photo.url,
+          big: photo.url,
+          description: photo.description
+        });
+      }
     }
     return imageUrls;
   }

@@ -14,7 +14,6 @@ using Microsoft.Extensions.Options;
 
 namespace DatingApp.API.Controllers
 {
-    [Authorize]
     [Route("api/users/{userId}/photos")]
     [ApiController]
     public class PhotosController : ControllerBase
@@ -76,6 +75,7 @@ namespace DatingApp.API.Controllers
 
             photoForCreationDto.Url = uploadResult.Uri.ToString();
             photoForCreationDto.PublicId = uploadResult.PublicId;
+            photoForCreationDto.IsApproved = false;
 
             var photo = _mapper.Map<Photo>(photoForCreationDto);
 
